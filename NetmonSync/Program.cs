@@ -16,7 +16,7 @@ namespace NetmonSync
 
             //var tmp = rl.Routers[100].aliases.Adresses.Count;
             int wartezeit; //= Properties.Settings.Default.Delay;
-            if (args.Length != 3 || int.TryParse(args[2], out wartezeit))
+            if (args.Length != 3 || !int.TryParse(args[2], out wartezeit))
             {
                 Console.WriteLine("Falsche Parameter!");
                 Console.WriteLine("Example: https://netmon.freifunk-franken.de/ http://95.85.40.145:5984/libremap-dev/ 600000");
