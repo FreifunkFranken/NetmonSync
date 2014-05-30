@@ -17,7 +17,7 @@ namespace NetmonSync
 
         public ClassNetmonList(string url)
         {
-            XDocument doc = XDocument.Parse(ClassHttp.HttpGet(Properties.Settings.Default.APIUrl + url));
+            XDocument doc = XDocument.Parse(ClassHttp.HttpGet(Properties.Settings.Default.Netmon + url));
             XNode routerlist = doc.Root.LastNode;
 
             count = int.Parse((routerlist as XElement).Attribute("total_count").Value);
@@ -32,7 +32,7 @@ namespace NetmonSync
                 parameters.Add("offset", "50");
                 parameters.Add("limit", (count - 50).ToString());
 
-                doc = XDocument.Parse(ClassHttp.HttpGet(Properties.Settings.Default.APIUrl + url, parameters));
+                doc = XDocument.Parse(ClassHttp.HttpGet(Properties.Settings.Default.Netmon + url, parameters));
                 routerlist = doc.Root.LastNode;
 
                 foreach (var router in (routerlist as XElement).Nodes())

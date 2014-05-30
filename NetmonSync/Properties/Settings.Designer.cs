@@ -26,12 +26,36 @@ namespace NetmonSync.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://netmon.freifunk-franken.de/")]
-        public string APIUrl {
+        public string Netmon {
             get {
-                return ((string)(this["APIUrl"]));
+                return ((string)(this["Netmon"]));
             }
             set {
-                this["APIUrl"] = value;
+                this["Netmon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://95.85.40.145:5984/libremap-dev/")]
+        public string CouchDB {
+            get {
+                return ((string)(this["CouchDB"]));
+            }
+            set {
+                this["CouchDB"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Delay {
+            get {
+                return ((int)(this["Delay"]));
+            }
+            set {
+                this["Delay"] = value;
             }
         }
     }

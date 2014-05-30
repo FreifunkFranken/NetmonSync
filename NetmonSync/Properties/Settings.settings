@@ -2,8 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NetmonSync.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="APIUrl" Type="System.String" Scope="User">
+    <Setting Name="Netmon" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://netmon.freifunk-franken.de/</Value>
+    </Setting>
+    <Setting Name="CouchDB" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://95.85.40.145:5984/libremap-dev/</Value>
+    </Setting>
+    <Setting Name="Delay" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

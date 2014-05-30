@@ -9,7 +9,7 @@ namespace NetmonSync
 {
     class ClassCouchDB
     {
-        private string _server = "http://95.85.40.145:5984/libremap-dev/";
+        private string _server = Properties.Settings.Default.CouchDB;
         private Dictionary<string, string> _docIDs;
         private Dictionary<string, string> _docs;
 

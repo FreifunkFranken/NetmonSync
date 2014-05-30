@@ -15,7 +15,18 @@ namespace NetmonSync
             //ClassNetmonOriginatorStatusList nil = new ClassNetmonOriginatorStatusList(32);
 
             //var tmp = rl.Routers[100].aliases.Adresses.Count;
-            int wartezeit = 600000;  //1000 = 1sek
+            int wartezeit; //= Properties.Settings.Default.Delay;
+            if (args.Length != 3 || int.TryParse(args[2], out wartezeit))
+            {
+                Console.WriteLine("Falsche Parameter!");
+                Console.WriteLine("Example: https://netmon.freifunk-franken.de/ http://95.85.40.145:5984/libremap-dev/ 600000");
+                return;
+            }
+
+            Properties.Settings.Default.Netmon = args[0];
+            Properties.Settings.Default.CouchDB = args[1];
+            Properties.Settings.Default.Delay = wartezeit;
+
             while (true)
             {
                 Console.WriteLine("Start");
