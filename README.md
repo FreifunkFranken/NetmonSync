@@ -11,7 +11,7 @@ sudo apt-get install mono-devel
 ```
 xbuild NetmonSync.sln
 ```
-The compiled program you will find in Folder NetmonSync/bin/Debug/.
+The compiled program you will find in Folder **NetmonSync/bin/Debug/**.
 
 ###Run Software
 This Parameter must be set on start:
