@@ -104,7 +104,7 @@ namespace NetmonSync
         }
 
         public string community = "Freifunk/Franken";
-        public string baseURL = "https://netmon.freifunk-franken.de";
+        public string baseURL = Properties.Settings.Default.Netmon;
 
         public string Json
         {
@@ -148,7 +148,7 @@ namespace NetmonSync
 
                 json += "\"attributes\":{\"netmon\":{";
                 json += "\"id\":\"" + this.routerID + "\",";
-                json += "\"url\":\"" + this.baseURL + "/router.php?router_id=" + this.routerID + "\"";
+                json += "\"url\":\"" + this.baseURL + "router.php?router_id=" + this.routerID + "\"";
                 json += "}}}";
 
                 return json;
