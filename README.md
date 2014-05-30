@@ -27,5 +27,5 @@ mono NetmonSync/bin/Debug/NetmonSync.exe %netmonURL% %libremapURL% %delay%
 ```
 For FreifunkFranken Run this:
 ```
-mono NetmonSync/bin/Debug/NetmonSync.exe https://netmon.freifunk-franken.de/ http://95.85.40.145:5984/libremap-dev/ 600000
+mono NetmonSync/bin/Debug/NetmonSync.exe https://netmon.freifunk-franken.de/ http://95.85.40.145:5984/libremap-dev/ 10
 ```
