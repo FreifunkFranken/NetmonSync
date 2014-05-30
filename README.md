@@ -20,7 +20,7 @@ Parameter   | Description                      | Example
 ----------- | ---------------------------------| --------------------------------------
 netmonURL   | URL to Netmon ending with "/"    | https://netmon.freifunk-franken.de/
 libremapURL | URL to LibreMap ending with "/"  | http://95.85.40.145:5984/libremap-dev/
-delay       | Time in minutes waiting          | 600000
+delay       | Time in minutes waiting          | 10
 
 ```
 mono NetmonSync/bin/Debug/NetmonSync.exe %netmonURL% %libremapURL% %delay%
