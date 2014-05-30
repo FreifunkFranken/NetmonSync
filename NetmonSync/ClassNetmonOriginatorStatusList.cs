@@ -21,7 +21,8 @@ namespace NetmonSync
             get {
                 ClassNetmonNetworkinterfacelist infaces = new ClassNetmonNetworkinterfacelist(this.routerID);
                 List<ClassLink> linklist = new List<ClassLink>();
-                foreach (XNode originator in items)
+                /* temporary disabled because of #2
+		foreach (XNode originator in items)
                 {
                     string alias_local = "";
                     string alias_remote = "";
@@ -38,6 +39,7 @@ namespace NetmonSync
                         linklist.Add(new ClassLink(alias_local, alias_remote, quality));
                     }
                 }
+		*/
                 return linklist;
             }
         }
