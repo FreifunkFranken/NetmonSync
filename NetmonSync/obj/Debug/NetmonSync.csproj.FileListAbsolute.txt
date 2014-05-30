@@ -1,0 +1,6 @@
+C:\Daten\vb\NetmonSync\NetmonSync\bin\Debug\NetmonSync.exe.config
+C:\Daten\vb\NetmonSync\NetmonSync\bin\Debug\NetmonSync.exe
+C:\Daten\vb\NetmonSync\NetmonSync\bin\Debug\NetmonSync.pdb
+C:\Daten\vb\NetmonSync\NetmonSync\bin\Debug\LitJson.dll
+C:\Daten\vb\NetmonSync\NetmonSync\obj\Debug\NetmonSync.exe
+C:\Daten\vb\NetmonSync\NetmonSync\obj\Debug\NetmonSync.pdb
