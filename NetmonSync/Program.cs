@@ -46,7 +46,10 @@ namespace NetmonSync
             ClassCouchDB db = new ClassCouchDB();
             foreach (ClassRouter router in rl.Routers)
             {
-                db.addDoc(router.Json);
+                if (router.online)
+                {
+                    db.addDoc(router.Json);
+                }
             }
         }
 

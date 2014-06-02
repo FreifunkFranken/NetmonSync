@@ -48,7 +48,16 @@ namespace NetmonSync
         {
             get
             {
-                return UnixTimeStampToDateTime(int.Parse((_xml as XElement).Element("update_date").Value));
+                //return UnixTimeStampToDateTime(int.Parse((_xml as XElement).Element("update_date").Value));
+                return UnixTimeStampToDateTime((Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
+            }
+        }
+        public bool online
+        {
+            get
+            {
+                if ((_xml as XElement).Element("statusdata").Element("status").Value == "online") return true;
+                else return false;
             }
         }
 
@@ -115,8 +124,8 @@ namespace NetmonSync
                 json += "\"api_rev\":\"1.0\",";
                 json += "\"type\":\"router\",";
                 json += "\"hostname\":\"" + this.hostname + "\",";
-                json += "\"ctime\":\"" + this.ctime.ToString("yyyy-MM-ddThh:mm:ss.fffZ") + "\",";
-                json += "\"mtime\":\"" + this.mtime.ToString("yyyy-MM-ddThh:mm:ss.fffZ") + "\",";
+                json += "\"ctime\":\"" + this.ctime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") + "\",";
+                json += "\"mtime\":\"" + this.mtime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") + "\",";
                 json += "\"lat\":" + this.lat + ",";
                 json += "\"lon\":" + this.lon + ",";
 
