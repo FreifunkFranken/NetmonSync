@@ -58,8 +58,8 @@ namespace NetmonSync
             JsonData OldDoc = JsonMapper.ToObject(this._docs[docID]);
             JsonData NewDoc = JsonMapper.ToObject(docContent);
 
-            if (OldDoc["mtime"].ToString() != NewDoc["mtime"].ToString())
-            {
+            //if (OldDoc["mtime"].ToString() != NewDoc["mtime"].ToString())
+            //{
                 Console.WriteLine(DateTime.Now + ": " + NewDoc["hostname"].ToString() + " with id (CouchDB) " + docID + " updated.");
 
                 NewDoc["_rev"] = OldDoc["_rev"].ToString();
@@ -70,7 +70,7 @@ namespace NetmonSync
                 var tmp = NewDoc["lat"];
 
                 ClassHttp.HttpPut(this._server + docID, NewDoc.ToJson());
-            }
+            //}
             return true;
         }
 

@@ -49,7 +49,7 @@ namespace NetmonSync
             get
             {
                 //return UnixTimeStampToDateTime(int.Parse((_xml as XElement).Element("update_date").Value));
-                return UnixTimeStampToDateTime((Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
+                return DateTime.UtcNow;
             }
         }
         public bool online
