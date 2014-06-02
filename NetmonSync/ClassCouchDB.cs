@@ -67,8 +67,6 @@ namespace NetmonSync
                 //NewDoc["lat"] = OldDoc["lat"].ToString();
                 //NewDoc["lon"] = OldDoc["lon"].ToString();
 
-                var tmp = NewDoc["lat"];
-
                 ClassHttp.HttpPut(this._server + docID, NewDoc.ToJson());
             //}
             return true;
