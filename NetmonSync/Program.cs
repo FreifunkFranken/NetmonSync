@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.IO;
 
 namespace NetmonSync
 {
@@ -11,6 +12,14 @@ namespace NetmonSync
         static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+
+            string logpath = Environment.CurrentDirectory + "\\log.txt";
+            FileStream filestream = new FileStream(logpath, FileMode.Append);
+            var streamwriter = new StreamWriter(filestream);
+            streamwriter.AutoFlush = true;
+            Console.SetOut(streamwriter);
+            Console.SetError(streamwriter);
+
             //ClassNetmonRouterlist rl = new ClassNetmonRouterlist();
             //ClassNetmonOriginatorStatusList nil = new ClassNetmonOriginatorStatusList(32);
 
@@ -27,13 +36,13 @@ namespace NetmonSync
             Properties.Settings.Default.CouchDB = args[1];
             Properties.Settings.Default.Delay = wartezeit;
 
-            if (args[3] == "DemonMode")
+            if (args.Length == 4 && args[3] == "DemonMode")
             {
                 while (true)
                 {
-                    Console.WriteLine("Start");
+                    Console.WriteLine(DateTime.UtcNow.ToString() + " Start");
                     WriteNetmonToCouch();
-                    Console.WriteLine("Ende");
+                    Console.WriteLine(DateTime.UtcNow.ToString() + " Ende");
                     Console.WriteLine();
                     Console.WriteLine("Warte " + wartezeit + " Minuten für nächsten Durchlauf...");
                     System.Threading.Thread.Sleep(wartezeit * 60000);
@@ -41,9 +50,12 @@ namespace NetmonSync
             }
             else
             {
+                Console.WriteLine(DateTime.UtcNow.ToString() + " Start");
                 WriteNetmonToCouch();
+                Console.WriteLine(DateTime.UtcNow.ToString() + " Ende");
             }
             //ClearCouch();
+            streamwriter.Close();
         }
 
         static void WriteNetmonToCouch()
