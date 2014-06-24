@@ -44,7 +44,7 @@ namespace NetmonSync
 
             if (!System.IO.Path.IsPathRooted(Properties.Settings.Default.LogPath))
             {
-                Properties.Settings.Default.LogPath = Environment.CurrentDirectory + Properties.Settings.Default.LogPath;
+                Properties.Settings.Default.LogPath = System.IO.Path.Combine(Environment.CurrentDirectory, Properties.Settings.Default.LogPath);
             }
 
             FileStream filestream = new FileStream(Properties.Settings.Default.LogPath, FileMode.Append);
