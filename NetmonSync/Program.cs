@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.IO;
+using System.Collections;
 
 namespace NetmonSync
 {
@@ -11,32 +12,48 @@ namespace NetmonSync
     {
         static void Main(string[] args)
         {
+            int i = 0;
+            while(i < args.Length)
+            {
+                switch (args[i])
+                {
+                    case "--netmon":
+                        i++;
+                        Properties.Settings.Default.Netmon = args[i];
+                        break;
+                    case "--libremap":
+                        i++;
+                        Properties.Settings.Default.CouchDB = args[i];
+                        break;
+                    case "--delay":
+                        i++;
+                        Properties.Settings.Default.Delay = int.Parse(args[i]);
+                        break;
+                    case "-d":
+                        Properties.Settings.Default.DeamonMode = true;
+                        break;
+                    case "--log":
+                        i++;
+                        Properties.Settings.Default.LogPath = args[i];
+                        break;
+                }
+                i++;
+            }
+
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
 
-            string logpath = Environment.CurrentDirectory + "\\log.txt";
-            FileStream filestream = new FileStream(logpath, FileMode.Append);
+            if (!System.IO.Path.IsPathRooted(Properties.Settings.Default.LogPath))
+            {
+                Properties.Settings.Default.LogPath = Environment.CurrentDirectory + Properties.Settings.Default.LogPath;
+            }
+
+            FileStream filestream = new FileStream(Properties.Settings.Default.LogPath, FileMode.Append);
             var streamwriter = new StreamWriter(filestream);
             streamwriter.AutoFlush = true;
             Console.SetOut(streamwriter);
             Console.SetError(streamwriter);
 
-            //ClassNetmonRouterlist rl = new ClassNetmonRouterlist();
-            //ClassNetmonOriginatorStatusList nil = new ClassNetmonOriginatorStatusList(32);
-
-            //var tmp = rl.Routers[100].aliases.Adresses.Count;
-            int wartezeit; //= Properties.Settings.Default.Delay;
-            if ((args.Length != 3 && args.Length != 4) || !int.TryParse(args[2], out wartezeit))
-            {
-                Console.WriteLine("Falsche Parameter!");
-                Console.WriteLine("Example: https://netmon.freifunk-franken.de/ http://95.85.40.145:5984/libremap-dev/ 10");
-                return;
-            }
-
-            Properties.Settings.Default.Netmon = args[0];
-            Properties.Settings.Default.CouchDB = args[1];
-            Properties.Settings.Default.Delay = wartezeit;
-
-            if (args.Length == 4 && args[3] == "DeamonMode")
+            if (Properties.Settings.Default.DeamonMode)
             {
                 while (true)
                 {
@@ -44,8 +61,8 @@ namespace NetmonSync
                     WriteNetmonToCouch();
                     Console.WriteLine(DateTime.UtcNow.ToString() + " Ende");
                     Console.WriteLine();
-                    Console.WriteLine("Warte " + wartezeit + " Minuten für nächsten Durchlauf...");
-                    System.Threading.Thread.Sleep(wartezeit * 60000);
+                    Console.WriteLine("Warte " + Properties.Settings.Default.Delay + " Minuten für nächsten Durchlauf...");
+                    System.Threading.Thread.Sleep(Properties.Settings.Default.Delay * 60000);
                 }
             }
             else
