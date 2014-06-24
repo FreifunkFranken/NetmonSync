@@ -36,7 +36,7 @@ namespace NetmonSync
             Properties.Settings.Default.CouchDB = args[1];
             Properties.Settings.Default.Delay = wartezeit;
 
-            if (args.Length == 4 && args[3] == "DemonMode")
+            if (args.Length == 4 && args[3] == "DeamonMode")
             {
                 while (true)
                 {
