@@ -16,7 +16,7 @@ namespace NetmonSync
 
             //var tmp = rl.Routers[100].aliases.Adresses.Count;
             int wartezeit; //= Properties.Settings.Default.Delay;
-            if (args.Length != 3 || !int.TryParse(args[2], out wartezeit))
+            if ((args.Length != 3 && args.Length != 4) || !int.TryParse(args[2], out wartezeit))
             {
                 Console.WriteLine("Falsche Parameter!");
                 Console.WriteLine("Example: https://netmon.freifunk-franken.de/ http://95.85.40.145:5984/libremap-dev/ 10");
@@ -27,14 +27,21 @@ namespace NetmonSync
             Properties.Settings.Default.CouchDB = args[1];
             Properties.Settings.Default.Delay = wartezeit;
 
-            while (true)
+            if (args[3] == "DemonMode")
             {
-                Console.WriteLine("Start");
+                while (true)
+                {
+                    Console.WriteLine("Start");
+                    WriteNetmonToCouch();
+                    Console.WriteLine("Ende");
+                    Console.WriteLine();
+                    Console.WriteLine("Warte " + wartezeit + " Minuten für nächsten Durchlauf...");
+                    System.Threading.Thread.Sleep(wartezeit * 60000);
+                }
+            }
+            else
+            {
                 WriteNetmonToCouch();
-                Console.WriteLine("Ende");
-                Console.WriteLine();
-                Console.WriteLine("Warte " + wartezeit + " Minuten für nächsten Durchlauf...");
-                System.Threading.Thread.Sleep(wartezeit * 60000);
             }
             //ClearCouch();
         }
