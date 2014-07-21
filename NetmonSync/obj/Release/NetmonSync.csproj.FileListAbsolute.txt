@@ -1,7 +1,0 @@
-C:\Daten\vb\NetmonSync\NetmonSync\bin\Release\NetmonSync.exe.config
-C:\Daten\vb\NetmonSync\NetmonSync\obj\Release\NetmonSync.csprojResolveAssemblyReference.cache
-C:\Daten\vb\NetmonSync\NetmonSync\bin\Release\NetmonSync.exe
-C:\Daten\vb\NetmonSync\NetmonSync\bin\Release\NetmonSync.pdb
-C:\Daten\vb\NetmonSync\NetmonSync\bin\Release\LitJson.dll
-C:\Daten\vb\NetmonSync\NetmonSync\obj\Release\NetmonSync.exe
-C:\Daten\vb\NetmonSync\NetmonSync\obj\Release\NetmonSync.pdb

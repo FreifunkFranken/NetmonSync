@@ -1,5 +1,0 @@
-C:\Daten\vb\NetmonSync\NetmonSync\bin\Debug\NetmonSync.exe.mdb
-C:\Daten\vb\NetmonSync\NetmonSync\bin\Debug\NetmonSync.exe
-C:\Daten\vb\NetmonSync\NetmonSync\obj\Debug\NetmonSync.exe
-C:\Daten\vb\NetmonSync\NetmonSync\obj\Debug\NetmonSync.exe.mdb
-C:\Daten\vb\NetmonSync\NetmonSync\obj\Debug\.NETFramework,Version=v4.5.AssemblyAttribute.cs
